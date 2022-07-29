@@ -137,6 +137,11 @@ export default function AppFunctional(props) {
     })
     .then((response) => {
       setMessage(response.data.message)
+      setEmail("");
+    })
+    .catch((err)=>{
+      setMessage(err.response.data.message)
+      setEmail("");
     })
   }
 
@@ -146,7 +151,7 @@ export default function AppFunctional(props) {
         <h3 id="coordinates">
           Coordinates ({x + 2}, {y + 2})
         </h3>
-        <h3 id="steps">You moved {steps} times</h3>
+        <h3 id="steps">You moved {steps} time{ steps === 1 ? "" : "s"}</h3>
       </div>
       <div id="grid">
         {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((idx) => (
